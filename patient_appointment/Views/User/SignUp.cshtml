@@ -1,118 +1,178 @@
 ﻿@model patient_appointment.Models.UserModel
 
 @{
+    Layout = null;
     ViewBag.Title = "SignUp";
 }
 
-<h2>SignUp</h2>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="~/Content/SignupAndLogin/signup.css" rel="stylesheet" />
+</head>
+ <body>
+
+     <div class="main">
+
+         <div class="logo-container">
+             <h1><a href="@Url.Action("Index", "Home")" class="login-link">Logo</a></h1>
+             <img src="~/Content/assets/illustration.png" class="illustration-image" />
+         </div>
+
+         <div class="signup-container">
+
+             <div class="form-container">
+                 <h2 class="signup-header"><span>Sign </span>Up</h2>
+                 @using (Html.BeginForm())
+                 {
+                     @Html.AntiForgeryToken()
 
 
-<div id="signup">
-</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>UserModel</h4>
-        <hr />
-        @* To show error  *@
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                     @* To show error  *@
+                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.firstName, htmlAttributes: new { @class = "control-label col-md-2 form-label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                     <div class="form-group name-input-group">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.lastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.lastName, new { placeholder = "Last name", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                         <div class="input-group">
+                             <input required="" type="text" name="firstName" autocomplete="off" class="input firstName">
+                             <label class="user-label">First name</label>
+                             @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                         </div>
+
+                         <div class="input-group">
+                             <input required="" type="text" name="lastName" autocomplete="off" class="input lastName">
+                             <label class="user-label">Last name</label>
+                             @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+
+                         </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                     </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                Male
-                @Html.RadioButtonFor(model => model.gender, "Male")
-                Female
-                @Html.RadioButtonFor(model => model.gender, "Female")
-                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                     <div class="form-group">
+
+                         <div class="input-group">
+                             <input required="" type="text" name="email" autocomplete="off" class="input email">
+                             <label class="user-label">Email</label>
+                            
+                         </div>
+
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.phoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.phoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.phoneNumber, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                     <div class="form-group">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.birthdate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.birthdate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.birthdate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                         <div class="input-group">
+                             <input required="" type="text" name="address" autocomplete="off" class="input address">
+                             <label class="user-label">Address</label>
+                
+                         </div>
+
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                     <div class="form-group ">
+                         <div class="input-group gender-input-group ">
+                             <span class="gender">Gender : </span>
+                             <input type="radio" id="Male" name="gender" value="Male">
+                             <label for="Male" class="gender-label">Male</label>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.confirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.confirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.confirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                             <input type="radio" id="Female" name="gender" value="Female">
+                             <label for="Female" class="gender-label">Female</label>
 
+                         </div>
 
-        @Html.ValidationMessage("Error", null, new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                         </div>
+
+                     </div>
 
 
-<div>
-    @Html.ActionLink("Already have an account", "Login")
-</div>
+                     <div class="form-group">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                         <div class="input-group">
+                             <input required="" type="text" name="phoneNumber" autocomplete="off" class="input phoneNumber">
+                             <label class="user-label">Phone number</label>
+    
+                         </div>
+
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.phoneNumber, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
+
+                     <div class="form-group">
+
+                         <div class="input-group birthdate-input-group">
+                             <input required="" type="date" name="birthdate" autocomplete="off" class="input phoneNumber">
+                             <label class="user-label">Birth date</label>
+
+                         </div>
+
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.birthdate, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
+
+
+                     <div class="form-group">
+
+                         <div class="input-group">
+                             <input required="" type="password" name="password" autocomplete="off" class="input password">
+                             <label class="user-label">Password</label>
+                         </div>
+
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
+
+                     <div class="form-group">
+
+                         <div class="input-group">
+                             <input required="" type="password" name="confirmPassword" autocomplete="off" class="input confirmPassword">
+                             <label class="user-label">Confirm Password</label>         
+                         </div>
+
+                         <div class="input-message-container">
+                             @Html.ValidationMessageFor(model => model.confirmPassword, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
+
+                     <div class="form-group">
+                         <input type="submit" value="Create Account" class="submit-button" />
+                     </div>
+
+                 }
+
+                 <div class="login-link-container">
+                     <a href="@Url.Action("Login", "User")" class="login-link"> Already have an account? Login ...</a>
+                 </div>
+
+                 <div class="error-message-container">
+                     @Html.ValidationMessage("Error", null, new { @class = "error-message" })
+                 </div>
+             </div>
+                 
+         </div>
+
+     </div>
+ </body>
+</html>
+
+
+
+

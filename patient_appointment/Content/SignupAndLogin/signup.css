@@ -1,0 +1,147 @@
+﻿body, html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.main{
+    display:grid;
+    grid-template-columns: 50% 50%;
+   height:100vh;
+}
+.logo-container{
+
+}
+
+.signup-header {
+    text-align: center;
+    font-size: 2rem;
+
+}
+    .signup-header span {
+        color: #0085FF;
+    }
+
+.illustration-image {
+    width: 60%;
+    margin: auto;
+    margin-top: 10rem;
+    margin-left: 15rem;
+    display: block;
+}
+
+.signup-container{
+    display:flex;
+    /*background-color:aquamarine;*/
+}
+.form-container {
+    margin: auto;
+    margin-right:17rem;
+    width: 50%;
+    /*height: 50rem;*/
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   padding:3em;
+   box-sizing:border-box;
+    transition: ease-in-out 250ms;
+}
+
+.form-container:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+ }
+.form-group{
+    margin-bottom:1rem;
+}
+.name-input-group {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
+}
+.gender{
+    font-weight:600;
+}
+/*============== INPUT =====================*/
+.input-group {
+    position: relative;
+}
+
+.input {
+    border: solid 1.8px #C7C7C7;
+    border-radius: 10px;
+    background: none;
+    padding: .8rem;
+    font-size: 1rem;
+    color: black;
+    width:100%;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.user-label {
+    position: absolute;
+    left: 15px;
+    color: #C7C7C7  ;
+    pointer-events: none;
+    transform: translateY(.8rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.input:focus, input:valid {
+    outline: none;
+    border: 1.5px solid #0084FD;
+}
+
+    .input:focus ~ label, input:valid ~ label {
+        transform: translateY(-50%) scale(0.8);
+        background-color: white;
+        padding: 0 .2em;
+        color: #0084FD;
+    }
+   /*====================================*/
+
+/*.lastName, .firstName{
+    width:90%;
+}*/
+
+.gender-label{
+    color:black;
+}
+.birthdate-input-group .user-label {
+    padding: 0 .2em;
+    background-color: white;
+    transform: translateY(-50%) scale(0.8);
+}
+
+.submit-button {
+    width: 100%;
+    margin-top:1rem;
+    padding: .5em;
+    font-size:1.3rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0085FF;
+    color:white;
+    transition: ease-in-out 250ms;
+}
+    .submit-button:hover {
+        cursor:pointer;
+        background-color: #0268C6;
+    }
+.login-link-container{
+    display:flex;
+}
+.login-link {
+    margin:auto;
+    text-decoration: none;
+    color: #7C7C7C;
+}
+
+    .login-link:hover {
+        color: #0085FF;
+        
+    }
+.error-message-container {
+    text-align: center;
+    margin-top:1.5rem;
+}
+.error-message {
+    color: red;
+}
