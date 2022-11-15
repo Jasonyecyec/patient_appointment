@@ -1,0 +1,133 @@
+﻿@model patient_appointment.DBModel.user
+
+@{
+    ViewBag.Title = "UserProfile";
+    ViewBag.alertMessage = TempData["alert-message"];
+}
+
+<h2>UserProfile</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <p>First name</p>
+        </dt>
+
+        <dd>
+            <fieldset disabled class="disabled-field">
+                @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
+            </fieldset>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+
+        <dd>
+            <fieldset disabled class="disabled-field">
+                @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
+            </fieldset>
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            <fieldset disabled class="disabled-field">
+                @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+
+            </fieldset>
+
+        </dd>
+
+        <dt>
+            <p>Address</p>
+        </dt>
+
+        <dd>
+            <fieldset disabled class="disabled-field">
+                @Html.TextBoxFor(model => model.address, new { @class = "form-control" })
+
+            </fieldset>
+        </dd>
+
+        <div class="form-group">
+
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-primary update-button">Update</button>
+                <input type="submit" value="Submit" class="btn btn-default save-button" />
+            </div>
+        </div>
+    </dl>
+
+
+}
+
+
+<script>
+        const updateButton = document.querySelector(".update-button");
+        const saveButton = document.querySelector(".save-button");
+        const inputField = document.querySelectorAll(".disabled-field")
+
+        let isFieldDisabled = true;
+
+
+
+
+
+        //check tempdata if has exist, show sweet alert
+        if ('@ViewBag.alertMessage' == "updated") {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                padding: '2em',
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                },
+
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Updated successfully',
+
+            })
+
+
+        }
+
+        const changeFieldSet = function (props) {
+            for (const field of inputField) {
+                field.disabled = props;
+            }
+            isFieldDisabled = props;
+        }
+
+
+
+        const changeSaveButton = function (props) {
+            saveButton.style.display = `${ props }`;
+        }
+        changeSaveButton("none")
+
+
+        //when update button click, loop through fieldset then set disabled to false
+        updateButton.addEventListener("click", function (event) {
+            isFieldDisabled ? (changeFieldSet(false), this.innerHTML = "Cancel", changeSaveButton("inline-block")) :
+                (changeFieldSet(true), this.innerHTML = "Update", changeSaveButton("none"));
+
+
+        })
+
+</script>
