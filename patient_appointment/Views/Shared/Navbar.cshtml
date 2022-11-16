@@ -1,0 +1,43 @@
+﻿<nav class="navbar navbar-expand-md ">
+    <div class="container-fluid">
+
+        <a class="navbar-brand ms-5" href="#">Navbar</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class
+                  ="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto ">
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "nav-link" })
+
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("About us", "About", "Home", new object { }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Contact", "Contact", "Home", new object { }, new { @class = "nav-link" })
+                </li>
+
+                @if (Session["name"] == null)
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("Login", "Login", "User", new object { }, new { @class = "nav-link" })
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a href="@Url.Action("UserProfile","User")"> <img src="@Session["userPhoto"]" alt="Alternate Text" class="user-photo" /> Hi! @Session["name"]</a>
+                    </li>
+                    <li class="nav-item">@Html.ActionLink("Logout", "Logout", "User")</li>
+                }
+            </ul>
+        </div>
+
+    </div>
+
+</nav>
+
