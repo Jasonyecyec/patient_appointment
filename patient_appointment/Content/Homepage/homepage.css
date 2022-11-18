@@ -1,4 +1,10 @@
-﻿body {
+﻿:root {
+    --mainColor: #008BFF;
+    --subColor: #FF9E4E;
+
+}
+
+body {
     font-family:"Poppins",sans-serif;
 }
 .navbar-nav{
@@ -8,13 +14,13 @@
     margin: 0 1rem;
     padding: 1em;
 }
-.navbar-nav li:first-child a {
+.navbar-nav .active-link{
         color: #008BFF;
         font-weight:600;
 }
 
     .navbar-nav li:hover a {
-        color: #008BFF;
+        /*color: #008BFF;*/
     }
     .homepage-container {
         width: 100%;
@@ -24,10 +30,86 @@
     opacity:0.5;*/
         box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
     }
+.user-photo{
+    width:2rem;
+}
+.navbar-user-name{
+    width:11rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    text-decoration:none;
+    color: #7C7C7C;
+    position:relative;
+}
 
+    .navbar-user-name:hover{
+        cursor:pointer;
+    }
+    .navbar-user-name-container {
+        position: relative;
+    }
+.navbar-user-menu-container {
+    z-index:10;
+    position: absolute;
+    bottom: -7rem;
+    right: 0;
+    width: 100%;
+    background-color: var(--mainColor);
+    border-radius: 10px;
+
+}
+/*==== JS ====*/
+  .display-navbar-menu{
+      display:none;
+  }
+    .navbar-user-menu-container::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        right: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: var(--mainColor);
+        z-index:-5;
+        transform: rotate(45deg);
+    }
+
+
+    .navbar-user-menu-container ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:100%;
+        height:100%;
+        padding: .5em;
+      
+    }
+        .navbar-user-menu-container ul li {
+            text-align: center;
+            padding: .5em;
+            width: 100%;
+            transition: 200ms ease-in-out;
+            /*background-color:white;*/
+        }
+        .navbar-user-menu-container li:hover {
+            background-color: white;
+           
+        }
+            .navbar-user-menu-container li:hover .navbar-user-menu-link {
+                color: var(--mainColor);
+            }
+
+    .navbar-user-menu-link {
+        color: whitesmoke;
+        text-decoration: none;
+
+    }
+/*=====================================*/
 .stethoscope-img {
     width: 55rem;
-    margin-left:10rem;
+    margin-left: 10rem;
 }
 
 .text-doctor-container {
@@ -206,7 +288,91 @@
     }
 }
 
-/*======================*/
+/*===================== WHO WE ARE SECTION =============*/
 .who-we-are-container{
+    display:grid;
+    grid-template-columns:45% 55%;
+    margin:12.5rem 0rem;
+}
+    .sample-img-container, .who-we-are-container .sample-txt-container {
+        position: relative;
+    }
+
+.sample-video-img {
+        width: 30rem;
 
 }
+.sample-video-img-border {
+    width: 10rem;
+    height: 10rem;
+    position: absolute;
+    top: -1.3rem;
+    left: 18.5rem;
+    background-color: var(--mainColor);
+    z-index:-1;
+}
+.bg-img-section {
+    width: 25rem;
+    position: absolute;
+    top: 0;
+    right: 12rem;
+}
+.img-container {
+    margin-left: 20rem;
+    position: relative;
+}
+.sample-img-overlay {
+    background-color: black;
+    position: absolute;
+    width:30rem;
+    height:30rem;
+    opacity:0.5;
+    top:0;
+    left:0;
+}
+.video-play-btn {
+    width: 3.5rem;
+    position: absolute;
+    left: -2rem;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.video-play-btn:hover{
+    cursor:pointer;
+}
+
+.sample-txt-container .who-we-are-title {
+    color: var(--subColor);
+    margin: 0;
+    font-weight: 600;
+}
+
+.sample-txt-container .who-we-are-title + h1 {
+    margin-top: 1rem;
+    font-size:3.5rem;
+    font-weight:700;
+    letter-spacing:2.3px;
+}
+
+.who-we-are-text{
+    color: #7C7C7C;
+    font-size:1.1rem;
+    /*margin-top:5rem;*/
+}
+
+.sample-txt-container .know-more-btn {
+    /*color: var(--mainColor);*/
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3rem;
+    margin-top: 3rem;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+}
+
+
+

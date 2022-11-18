@@ -167,9 +167,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\bg_img_section.png" />
     <Content Include="Content\assets\homepage_doctor_img.png" />
     <Content Include="Content\assets\illustration.png" />
     <Content Include="Content\assets\noto_stethoscope.png" />
+    <Content Include="Content\assets\sample_video_img.png" />
+    <Content Include="Content\assets\video_play_btn.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -237,6 +240,7 @@
       <DependentUpon>patientAppointDBModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Homepage\homepage.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
