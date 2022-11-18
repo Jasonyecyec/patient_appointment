@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
                 <li class="nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "nav-link active-link" })
 
                 </li>
                 <li class="nav-item">
@@ -30,9 +30,22 @@
                 else
                 {
                     <li class="nav-item">
-                        <a href="@Url.Action("UserProfile","User")"> <img src="@Session["userPhoto"]" alt="Alternate Text" class="user-photo" /> Hi! @Session["name"]</a>
+                        <div class="navbar-user-name-container">
+                            <p class="navbar-user-name">
+                                <img src="@Session["userPhoto"]" alt="Alternate Text" class="user-photo" /> Hi! @Session["name"]
+
+                            </p>
+
+                            <div class="navbar-user-menu-container display-navbar-menu">
+                                <ul>
+                                    <li> <a href="@Url.Action("UserProfile","User")" class="navbar-user-menu-link">  My Profile</a></li>
+                                    <li> <a href="@Url.Action("Logout","User")" class="navbar-user-menu-link">  Logout</a></li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                       
                     </li>
-                    <li class="nav-item">@Html.ActionLink("Logout", "Logout", "User")</li>
                 }
             </ul>
         </div>
