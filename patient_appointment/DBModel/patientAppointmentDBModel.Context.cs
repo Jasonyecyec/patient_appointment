@@ -25,6 +25,8 @@ namespace patient_appointment.DBModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<appointment_schedule> appointment_schedule { get; set; }
+        public virtual DbSet<doctor> doctors { get; set; }
         public virtual DbSet<user> users { get; set; }
     }
 }

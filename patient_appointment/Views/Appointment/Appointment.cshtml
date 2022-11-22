@@ -1,0 +1,62 @@
+﻿@model patient_appointment.Models.ServiceAndDoctor
+@{
+    ViewBag.Title = "Appointment";
+}
+
+<h2>Appointment</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @* To show error  *@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <select name="service" id="service">
+        <option value="@ViewBag.selected">@ViewBag.selected</option>
+        @foreach (var service in Model.services)
+        {
+            <option value=@service>@service</option>
+
+        }
+
+    </select>
+    
+    <input type="datetime-local" name="appointment-date" />
+
+    <select name="doctor" id="doctor">
+        <option value="">Select doctor</option>
+        @foreach (var doctor in Model.doctors)
+        {
+          
+                <option value=@doctor.doctorID>@doctor.doctorName</option>
+
+            
+
+        }
+    </select>
+
+    <textarea id="message" name="message" rows="4" cols="50">
+
+</textarea>
+
+    <div class="form-group">
+        <input type="submit" value="Log In" class="submit-button" />
+
+    </div>
+}
+
+    <script>
+        const service = document.getElementById("service");
+
+        let selectedService;
+        service.addEventListener("change", function (event) {
+          
+            selectedService = service.options[service.selectedIndex].text
+
+            console.log(selectedService)
+            var url = "Appointment?selected=" + selectedService;
+            window.location.href = url;
+        })
+    </script>

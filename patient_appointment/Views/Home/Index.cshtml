@@ -18,7 +18,16 @@
                 </p>
             </div>
 
-            <button>Make an appointment</button>
+            <button>
+                @*@if (Session["name"] != null)
+        {
+            @Html.ActionLink("Make an appointment", "Appointment", "Appointment")
+        }else{
+            @Html.ActionLink("Make an appointment", "Login", "User")
+        }*@
+
+                @Html.ActionLink("Make an appointment", "Appointment", "Appointment")
+            </button>
         </div>
 
 

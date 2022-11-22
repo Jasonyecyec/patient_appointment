@@ -12,26 +12,17 @@ namespace patient_appointment.DBModel
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class doctor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public user()
+        public doctor()
         {
             this.appointment_schedule = new HashSet<appointment_schedule>();
         }
     
-        public int userID { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string email { get; set; }
-        public string address { get; set; }
-        public string gender { get; set; }
-        public System.DateTime birthdate { get; set; }
-        public string phone_number { get; set; }
-        public System.DateTime date_created { get; set; }
-        public string user_photo { get; set; }
-        public string password { get; set; }
-        public string password_salt { get; set; }
+        public int doctorID { get; set; }
+        public string doctor_name { get; set; }
+        public string specialty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<appointment_schedule> appointment_schedule { get; set; }

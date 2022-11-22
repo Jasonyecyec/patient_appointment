@@ -1,0 +1,20 @@
+﻿@model patient_appointment.Models.AppointmentModel
+@*@model List<patient_appointment.Models.AppointmentModel>*@
+
+@{
+    ViewBag.Title = "ConfirmAppointment";
+}
+
+<h2>ConfirmAppointment</h2>
+
+
+<p>@Model.email</p>
+<p>@Model.phoneNumber</p>
+<p>@Session["name"]</p>
+<p>@Model.doctorName</p>
+<p>@Model.service</p>
+<p>@Model.appointmentDateAndTime</p>
+<p>@Model.finalCharge</p>
+<p>@Model.status</p>
+<p>@Model.referenceNo</p>
+

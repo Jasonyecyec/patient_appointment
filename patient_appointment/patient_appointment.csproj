@@ -139,30 +139,39 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="DBModel\patientAppointDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>patientAppointDBModel.Context.tt</DependentUpon>
+    <Compile Include="DBModel\appointment_schedule.cs">
+      <DependentUpon>patientAppointmentDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\patientAppointDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>patientAppointDBModel.tt</DependentUpon>
+    <Compile Include="DBModel\doctor.cs">
+      <DependentUpon>patientAppointmentDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\patientAppointDBModel.Designer.cs">
+    <Compile Include="DBModel\patientAppointmentDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>patientAppointDBModel.edmx</DependentUpon>
+      <DependentUpon>patientAppointmentDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\patientAppointmentDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>patientAppointmentDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\patientAppointmentDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>patientAppointmentDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DBModel\user.cs">
-      <DependentUpon>patientAppointDBModel.tt</DependentUpon>
+      <DependentUpon>patientAppointmentDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ServiceAndDoctor.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -191,15 +200,15 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Homepage\homepage.css" />
     <Content Include="Content\SignupAndLogin\signup.css" />
-    <Content Include="DBModel\patientAppointDBModel.Context.tt">
+    <Content Include="DBModel\patientAppointmentDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>patientAppointDBModel.edmx</DependentUpon>
-      <LastGenOutput>patientAppointDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>patientAppointmentDBModel.edmx</DependentUpon>
+      <LastGenOutput>patientAppointmentDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DBModel\patientAppointDBModel.tt">
+    <Content Include="DBModel\patientAppointmentDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>patientAppointDBModel.edmx</DependentUpon>
-      <LastGenOutput>patientAppointDBModel.cs</LastGenOutput>
+      <DependentUpon>patientAppointmentDBModel.edmx</DependentUpon>
+      <LastGenOutput>patientAppointmentDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -232,12 +241,12 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="DBModel\patientAppointDBModel.edmx">
+    <EntityDeploy Include="DBModel\patientAppointmentDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>patientAppointDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>patientAppointmentDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DBModel\patientAppointDBModel.edmx.diagram">
-      <DependentUpon>patientAppointDBModel.edmx</DependentUpon>
+    <Content Include="DBModel\patientAppointmentDBModel.edmx.diagram">
+      <DependentUpon>patientAppointmentDBModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Homepage\homepage.js" />
@@ -270,6 +279,8 @@
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\User\LogIn.cshtml" />
     <Content Include="Views\Shared\Navbar.cshtml" />
+    <Content Include="Views\Appointment\Appointment.cshtml" />
+    <Content Include="Views\Appointment\ConfirmAppointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
