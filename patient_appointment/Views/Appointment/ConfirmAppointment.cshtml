@@ -2,19 +2,45 @@
 @*@model List<patient_appointment.Models.AppointmentModel>*@
 
 @{
+    /**/
+
     ViewBag.Title = "ConfirmAppointment";
 }
 
 <h2>ConfirmAppointment</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
 
-<p>@Model.email</p>
-<p>@Model.phoneNumber</p>
-<p>@Session["name"]</p>
-<p>@Model.doctorName</p>
-<p>@Model.service</p>
-<p>@Model.appointmentDateAndTime</p>
-<p>@Model.finalCharge</p>
-<p>@Model.status</p>
-<p>@Model.referenceNo</p>
 
+    <p>@Model.email</p>
+    <p>@Model.phoneNumber</p>
+    <p>@Session["name"]</p>
+    <p>@Model.doctorName</p>
+    <p>@Model.service</p>
+    <p>@Model.appointmentDateAndTime</p>
+    <p>@Model.finalCharge</p>
+    <p>@Model.status</p>
+    <p>@Model.referenceNo</p>
+
+    @Html.HiddenFor(m => m.patientName);
+    @Html.HiddenFor(m => m.email);
+    @Html.HiddenFor(m => m.phoneNumber);
+    @Html.HiddenFor(m => m.doctorName);
+    @Html.HiddenFor(m => m.service);
+    @Html.HiddenFor(m => m.appointmentDateAndTime);
+    @Html.HiddenFor(m => m.finalCharge);
+    @Html.HiddenFor(m => m.status);
+    @Html.HiddenFor(m => m.referenceNo);
+    @Html.HiddenFor(m => m.message);
+
+    <button><a href="javascript:history.back()">Back to List</a></button>
+    <div class="form-group">
+        <input type="submit" value="Log In" class="submit-button" />
+
+    </div>
+
+}
+
+<p>sample @ViewBag.email</p>

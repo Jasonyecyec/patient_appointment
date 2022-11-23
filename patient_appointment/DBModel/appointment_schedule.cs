@@ -15,15 +15,15 @@ namespace patient_appointment.DBModel
     public partial class appointment_schedule
     {
         public int appointmentID { get; set; }
-        public Nullable<int> userID { get; set; }
-        public Nullable<int> doctorID { get; set; }
+        public string patient_name { get; set; }
+        public string email { get; set; }
+        public string phone_number { get; set; }
+        public string doctor_name { get; set; }
         public System.DateTime date_and_time { get; set; }
         public string reference_no { get; set; }
         public int total_charge { get; set; }
         public string service { get; set; }
         public string appointment_status { get; set; }
-    
-        public virtual user user { get; set; }
-        public virtual doctor doctor { get; set; }
+        public string message { get; set; }
     }
 }

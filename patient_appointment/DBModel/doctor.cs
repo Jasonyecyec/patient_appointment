@@ -14,17 +14,8 @@ namespace patient_appointment.DBModel
     
     public partial class doctor
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public doctor()
-        {
-            this.appointment_schedule = new HashSet<appointment_schedule>();
-        }
-    
         public int doctorID { get; set; }
         public string doctor_name { get; set; }
         public string specialty { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<appointment_schedule> appointment_schedule { get; set; }
     }
 }

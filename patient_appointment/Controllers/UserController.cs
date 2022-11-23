@@ -132,6 +132,7 @@ namespace patient_appointment.Controllers
             //create name session and display in Homepage
             Session["name"] = userTable.first_name + " " + userTable.last_name;
             Session["id"] = userTable.userID;
+            Session["email"] = userTable.email;
             Session["userPhoto"] = Url.Content(userTable.user_photo.Trim());
             return RedirectToAction("Index", "Home");
 
@@ -164,6 +165,7 @@ namespace patient_appointment.Controllers
                             //get name and store in session, redirect to homepage
                             Session["name"] = findUser.first_name + " " + findUser.last_name;
                             Session["id"] = findUser.userID;
+                            Session["email"] = findUser.email;
                             Session["userPhoto"] = Url.Content(findUser.user_photo.Trim());
 
                             return RedirectToAction("Index", "Home");
