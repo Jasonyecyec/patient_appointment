@@ -1,0 +1,40 @@
+﻿@model patient_appointment.Models.AppointmentHistory
+
+@{
+    ViewBag.Title = "AppointmentHistory";
+}
+
+<h2>AppointmentHistory</h2>
+<table class="table">
+
+
+    @foreach (var item in Model.appointmentHistory)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.patientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.doctorName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.reference)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.service)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateAndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalCharge)
+        </td>
+
+    </tr>
+    }
+
+</table>

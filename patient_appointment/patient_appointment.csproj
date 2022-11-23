@@ -169,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppointmentHistory.cs" />
     <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ServiceAndDoctor.cs" />
@@ -281,6 +282,9 @@
     <Content Include="Views\Shared\Navbar.cshtml" />
     <Content Include="Views\Appointment\Appointment.cshtml" />
     <Content Include="Views\Appointment\ConfirmAppointment.cshtml" />
+    <Content Include="Views\Appointment\test.cshtml" />
+    <Content Include="Views\Appointment\AppointmentHistory.cshtml" />
+    <Content Include="Views\Shared\Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

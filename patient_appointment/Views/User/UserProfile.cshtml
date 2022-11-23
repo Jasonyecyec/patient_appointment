@@ -6,7 +6,9 @@
 }
 
 <h2>UserProfile</h2>
-
+<div>
+    @Html.Partial("Sidebar");
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

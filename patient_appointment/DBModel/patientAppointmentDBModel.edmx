@@ -9,14 +9,17 @@
           <Key>
             <PropertyRef Name="appointmentID" />
           </Key>
-          <Property Name="appointmentID" Type="int" Nullable="false" />
-          <Property Name="userID" Type="int" />
-          <Property Name="doctorID" Type="int" />
-          <Property Name="date_and_time" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="reference_no" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="appointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="patient_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="doctor_name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="date_and_time" Type="datetime" Precision="6" Nullable="false" />
+          <Property Name="reference_no" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="total_charge" Type="int" Nullable="false" />
-          <Property Name="service" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="appointment_status" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="service" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="appointment_status" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="125" Nullable="false" />
         </EntityType>
         <EntityType Name="doctors">
           <Key>
@@ -43,42 +46,10 @@
           <Property Name="password" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="password_salt" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
-        <Association Name="appointment_schedule_ibfk_1">
-          <End Role="users" Type="Self.users" Multiplicity="0..1" />
-          <End Role="appointment_schedule" Type="Self.appointment_schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="appointment_schedule">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="appointment_schedule_ibfk_2">
-          <End Role="doctors" Type="Self.doctors" Multiplicity="0..1" />
-          <End Role="appointment_schedule" Type="Self.appointment_schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="doctors">
-              <PropertyRef Name="doctorID" />
-            </Principal>
-            <Dependent Role="appointment_schedule">
-              <PropertyRef Name="doctorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="patient_appointment_managementModelStoreContainer">
           <EntitySet Name="appointment_schedule" EntityType="Self.appointment_schedule" Schema="patient_appointment_management" store:Type="Tables" />
           <EntitySet Name="doctors" EntityType="Self.doctors" Schema="patient_appointment_management" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="patient_appointment_management" store:Type="Tables" />
-          <AssociationSet Name="appointment_schedule_ibfk_1" Association="Self.appointment_schedule_ibfk_1">
-            <End Role="users" EntitySet="users" />
-            <End Role="appointment_schedule" EntitySet="appointment_schedule" />
-          </AssociationSet>
-          <AssociationSet Name="appointment_schedule_ibfk_2" Association="Self.appointment_schedule_ibfk_2">
-            <End Role="doctors" EntitySet="doctors" />
-            <End Role="appointment_schedule" EntitySet="appointment_schedule" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -89,16 +60,17 @@
           <Key>
             <PropertyRef Name="appointmentID" />
           </Key>
-          <Property Name="appointmentID" Type="Int32" Nullable="false" />
-          <Property Name="userID" Type="Int32" />
-          <Property Name="doctorID" Type="Int32" />
+          <Property Name="appointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="patient_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="doctor_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="date_and_time" Type="DateTime" Nullable="false" />
-          <Property Name="reference_no" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reference_no" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="total_charge" Type="Int32" Nullable="false" />
-          <Property Name="service" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="appointment_status" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.appointment_schedule_ibfk_1" FromRole="appointment_schedule" ToRole="users" />
-          <NavigationProperty Name="doctor" Relationship="Self.appointment_schedule_ibfk_2" FromRole="appointment_schedule" ToRole="doctors" />
+          <Property Name="service" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="appointment_status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="doctor">
           <Key>
@@ -107,7 +79,6 @@
           <Property Name="doctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="doctor_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="specialty" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="appointment_schedule" Relationship="Self.appointment_schedule_ibfk_2" FromRole="doctors" ToRole="appointment_schedule" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -125,44 +96,11 @@
           <Property Name="user_photo" Type="String" MaxLength="125" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password_salt" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="appointment_schedule" Relationship="Self.appointment_schedule_ibfk_1" FromRole="users" ToRole="appointment_schedule" />
         </EntityType>
-        <Association Name="appointment_schedule_ibfk_1">
-          <End Role="users" Type="Self.user" Multiplicity="0..1" />
-          <End Role="appointment_schedule" Type="Self.appointment_schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="users">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="appointment_schedule">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="appointment_schedule_ibfk_2">
-          <End Role="doctors" Type="Self.doctor" Multiplicity="0..1" />
-          <End Role="appointment_schedule" Type="Self.appointment_schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="doctors">
-              <PropertyRef Name="doctorID" />
-            </Principal>
-            <Dependent Role="appointment_schedule">
-              <PropertyRef Name="doctorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="patient_appointment_managementEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="appointment_schedule" EntityType="Self.appointment_schedule" />
           <EntitySet Name="doctors" EntityType="Self.doctor" />
           <EntitySet Name="users" EntityType="Self.user" />
-          <AssociationSet Name="appointment_schedule_ibfk_1" Association="Self.appointment_schedule_ibfk_1">
-            <End Role="users" EntitySet="users" />
-            <End Role="appointment_schedule" EntitySet="appointment_schedule" />
-          </AssociationSet>
-          <AssociationSet Name="appointment_schedule_ibfk_2" Association="Self.appointment_schedule_ibfk_2">
-            <End Role="doctors" EntitySet="doctors" />
-            <End Role="appointment_schedule" EntitySet="appointment_schedule" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -174,13 +112,16 @@
             <EntityTypeMapping TypeName="patient_appointment_managementModel.appointment_schedule">
               <MappingFragment StoreEntitySet="appointment_schedule">
                 <ScalarProperty Name="appointmentID" ColumnName="appointmentID" />
-                <ScalarProperty Name="userID" ColumnName="userID" />
-                <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+                <ScalarProperty Name="patient_name" ColumnName="patient_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="doctor_name" ColumnName="doctor_name" />
                 <ScalarProperty Name="date_and_time" ColumnName="date_and_time" />
                 <ScalarProperty Name="reference_no" ColumnName="reference_no" />
                 <ScalarProperty Name="total_charge" ColumnName="total_charge" />
                 <ScalarProperty Name="service" ColumnName="service" />
                 <ScalarProperty Name="appointment_status" ColumnName="appointment_status" />
+                <ScalarProperty Name="message" ColumnName="message" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
