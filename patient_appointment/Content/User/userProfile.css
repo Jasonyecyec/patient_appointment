@@ -1,0 +1,96 @@
+﻿body {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-family:"Poppins",sans-serif;
+}
+
+.main-content{
+    display:grid;
+    grid-template-columns: 25% 75%;
+}
+.user-profile-wrapper {
+    background-color: #F1F1F1;
+    padding: 3em;
+    box-sizing: border-box;
+}
+.user-profile-container{
+    background-color:white;
+    border-radius:1rem;
+    padding:3em;
+    box-sizing:border-box;
+}
+
+.user-profile-text{
+    margin:0;
+}
+
+.update-user-form form {
+    display: grid;
+    grid-template-areas: "fname lname" 
+                         "email  phone" 
+                         "address  address"
+                         "btn btn";
+    /*grid-template-columns: 1fr  1fr;*/
+    width: 100%;
+    margin-top:2rem;
+    height: 40rem;
+}
+.update-input-container p {
+    /*margin:0;*/
+    font-weight:600;
+    color: #7C7C7C;
+    font-size: 1.1rem;
+}
+.disabled-field {
+    border: none;
+    padding:0;
+}
+.disabled-field input{
+    font-size:1.2rem;
+    border-radius:10px;
+    padding:.8em;
+    width:30rem
+}
+.fname{
+    grid-area:fname;
+    background-color:white;
+}
+.lname {
+    grid-area: lname;
+}
+
+.email {
+    grid-area: email;
+}
+
+.phone {
+    grid-area: phone;
+}
+
+.address {
+    grid-area: address;
+
+}
+
+.address input{
+    width:90%;
+}
+    .update-btn-container {
+        grid-area: btn;
+        /*background-color:red;*/
+        width: 90%;
+        text-align: right;
+    }
+    .update-btn-container .btn {
+        background-color: #008BFF;
+        border:none;
+        border-radius:10px;
+        font-size:1.1rem;
+        padding:1em;
+        color:white;
+    }
+
+        .update-btn-container .btn:hover{
+            cursor:pointer;
+        }

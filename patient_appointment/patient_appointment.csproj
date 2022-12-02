@@ -177,11 +177,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Appointment\appointment.css" />
+    <Content Include="Content\Appointment\appointmentHistory.css" />
+    <Content Include="Content\Appointment\ConfirmAppointment.css" />
+    <Content Include="Content\assets\appointment_confirmPage.png" />
+    <Content Include="Content\assets\appointment_doctor.png" />
+    <Content Include="Content\assets\appointment_page.png" />
     <Content Include="Content\assets\bg_img_section.png" />
+    <Content Include="Content\assets\cancel-icon.png" />
     <Content Include="Content\assets\homepage_doctor_img.png" />
     <Content Include="Content\assets\illustration.png" />
     <Content Include="Content\assets\noto_stethoscope.png" />
     <Content Include="Content\assets\sample_video_img.png" />
+    <Content Include="Content\assets\user-appointment-iconW.png" />
+    <Content Include="Content\assets\user-history-icon.png" />
+    <Content Include="Content\assets\user-logout-icon.png" />
+    <Content Include="Content\assets\user-profile-icon.png" />
     <Content Include="Content\assets\video_play_btn.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -200,7 +211,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Homepage\homepage.css" />
+    <Content Include="Content\SignupAndLogin\otp.css" />
     <Content Include="Content\SignupAndLogin\signup.css" />
+    <Content Include="Content\User\sidebar.css" />
+    <Content Include="Content\User\userProfile.css" />
     <Content Include="DBModel\patientAppointmentDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>patientAppointmentDBModel.edmx</DependentUpon>

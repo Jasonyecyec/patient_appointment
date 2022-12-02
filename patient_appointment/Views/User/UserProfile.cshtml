@@ -1,88 +1,116 @@
 ﻿@model patient_appointment.DBModel.user
 
 @{
-    ViewBag.Title = "UserProfile";
+    Layout = null;
     ViewBag.alertMessage = TempData["alert-message"];
 }
 
-<h2>UserProfile</h2>
-<div>
-    @Html.Partial("Sidebar");
-</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <title>UserProfile</title>
 
-    <h4>userds sd asdasdssds</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <p>First name</p>
-        </dt>
+     @* == SWEET ALERT == *@
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="sweetalert2.min.js"></script>
+     <link rel="stylesheet" href="sweetalert2.min.css">
 
-        <dd>
-            <fieldset disabled class="disabled-field">
-                @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
-            </fieldset>
-        </dd>
+     <link href="~/Content/User/userProfile.css" rel="stylesheet" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.last_name)
-        </dt>
+     <style>
+         .user-link:nth-of-type(1) {
+             background-color: #008BFF;
+            border-radius:10px;
+            transition:250ms ease-in-out;
+         }
+             .user-link:nth-of-type(1):hover {
+                 background-color: #0268C6;
+             }
+             .user-link:nth-of-type(1) a {
+                 color: white;
+             }
+     </style>
+ </head>
+<body>
 
-        <dd>
-            <fieldset disabled class="disabled-field">
-                @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
-            </fieldset>
+    <div class="main-content">
+        <div>
+            @Html.Partial("Sidebar");
+        </div>
 
-        </dd>
+        <div class="user-profile-wrapper">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+            <div class="user-profile-container">
+                <div>
+                    <h1 class="user-profile-text">User Profile</h1>
+                </div>
 
-        <dd>
-            <fieldset disabled class="disabled-field">
-                @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+                <div class="update-user-form">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-            </fieldset>
+                    <div class="fname update-input-container">
+                        <p>First name</p>
+                        <fieldset disabled class="disabled-field">
+                            @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
+                        </fieldset>
+                    </div>
+                  
+                    <div class="lname update-input-container">
+                        <p>Last name</p>
+                        <fieldset disabled class="disabled-field">
+                            @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
+                        </fieldset>
+                    </div>
 
-        </dd>
+                    <div class="phone update-input-container">
+                        <p>Phone number</p>
+                        <fieldset disabled class="disabled-field">
+                            @Html.TextBoxFor(model => model.phone_number, new { @class = "form-control" })
+                        </fieldset>
+                    </div>
 
-        <dt>
-            <p>Address</p>
-        </dt>
+ 
+                    <div class="email update-input-container">
+                        <p>Email</p>
+                        <fieldset disabled class="disabled-field">
+                            @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
 
-        <dd>
-            <fieldset disabled class="disabled-field">
-                @Html.TextBoxFor(model => model.address, new { @class = "form-control" })
+                        </fieldset>
+                    </div>
+     
 
-            </fieldset>
-        </dd>
+                    <div class="address update-input-container">
+                        <p>Address</p>
 
-        <div class="form-group">
+                        <fieldset disabled class="disabled-field">
+                            @Html.TextBoxFor(model => model.address, new { @class = "form-control" })
 
-            <div class="col-md-offset-2 col-md-10">
-                <button type="button" class="btn btn-primary update-button">Update</button>
-                <input type="submit" value="Submit" class="btn btn-default save-button" />
+                        </fieldset>
+                    </div>
+
+
+          
+                            <div class="update-btn-container">
+                                <button type="button" class="btn btn-primary update-button">Update</button>
+                                <input type="submit" value="Submit" class="btn btn-default save-button" />
+                            </div>
+           
+
+                    }
+                </div>
+
             </div>
         </div>
-    </dl>
+    </div>
 
 
-}
-
-
-<script>
+    <script>
         const updateButton = document.querySelector(".update-button");
         const saveButton = document.querySelector(".save-button");
         const inputField = document.querySelectorAll(".disabled-field")
 
         let isFieldDisabled = true;
-
-
-
-
 
         //check tempdata if has exist, show sweet alert
         if ('@ViewBag.alertMessage' == "updated") {
@@ -132,4 +160,6 @@
 
         })
 
-</script>
+    </script>
+</body>
+</html>

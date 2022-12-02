@@ -222,7 +222,12 @@ namespace patient_appointment.Controllers
         {
 
             var session_userID = Convert.ToInt32(Session["id"].ToString());
-            user user = new user { userID = session_userID, first_name = userModel.first_name, last_name = userModel.last_name, email = userModel.email, address = userModel.address };
+            user user = new user { userID = session_userID,
+                                   first_name = userModel.first_name,
+                                   last_name = userModel.last_name,
+                                   email = userModel.email,
+                                   address = userModel.address,
+                                   phone_number = userModel.phone_number };
 
             using (patient_appointment_managementEntities userDBEntities = new patient_appointment_managementEntities())
             {
@@ -233,6 +238,7 @@ namespace patient_appointment.Controllers
                 userDB.last_name = userModel.last_name;
                 userDB.email = userModel.email;
                 userDB.address = userModel.address;
+                userDB.phone_number = userModel.phone_number;
                 userDBEntities.SaveChanges();
             }
 

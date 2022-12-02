@@ -3,35 +3,32 @@
     ViewBag.Title = "EmailValidation";
 }
 
+<div class="otp-main">
 
+    <div class="otp-form-container">
+        <h1 class="enter-otp-header">ENTER OTP</h1>
+        <div class="form-container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-horizontal">
-        <h4>LoginModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                
+            <p class="check-email-text">Check your email for the OTP</p>
+                    <div class="otp-container">
+                        @Html.TextBox("otp")
+                    </div>
+    
+                <input type="submit" value="SUBMIT" class="submit-otp-btn" />
+                <p class="error-message-otp">@Html.ValidationMessage("Error", null, new { @class = "" })</p>
+             
 
-        <div class="form-group">
-            @Html.Label("Enter OTP", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBox("otp")
-
-
+                }
             </div>
-        </div>
-
-
-        @Html.ValidationMessage("Error", null, new { @class = "text-danger" })
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" class="btn btn-default" />
-            </div>
-        </div>
+       
     </div>
-}
+   
+</div>
+
 

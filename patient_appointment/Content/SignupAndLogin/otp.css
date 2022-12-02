@@ -1,0 +1,86 @@
+﻿body {
+}
+
+.otp-main{
+    height:91vh;
+    position:relative;
+    font-family:"Poppins",sans-serif;
+}
+
+.otp-form-container {
+    padding: 3em;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 35rem;
+    height: 28rem;
+    position: absolute;
+    top: -15rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.otp-form-container .form-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+}
+
+.enter-otp-header{
+    position:relative;
+    margin:0;
+    font-weight:600;
+    margin-bottom:3rem;
+    font-size:2rem;
+}
+
+    .enter-otp-header::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -.5rem;
+        height: 15px;
+        width: 37%;
+        border-bottom: 5px solid #FF9E4E;
+    }
+
+.check-email-text{
+    font-size:1.2rem;
+}
+
+.otp-container{
+    margin:2rem 0 ;
+    width:20rem;
+    text-align:center;
+    
+}
+
+.otp-container input{
+    border-radius:10px;
+    font-size:1.2rem;
+    padding:.5em;
+    width:100%;
+    border: 1px solid black;
+    letter-spacing:2.3rem;
+    
+}
+.submit-otp-btn {
+    width: 20rem;
+    padding: .5em;
+    border: none;
+    background-color: #008BFF;
+    color:whitesmoke;
+    margin-top:.5rem;
+    font-weight:600;
+    letter-spacing:3px;
+    font-size:1.2rem;
+}
+
+.error-message-otp{
+    margin-top:1rem;
+    color:red;
+}
