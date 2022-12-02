@@ -1,6 +1,24 @@
 ﻿<div class="sidebar-container">
-    <p>User photo</p>
-    <button>@Html.ActionLink("My Profile", "UserProfile","User")</button>
-    <button>@Html.ActionLink("Appointment History", "AppointmentHistory","Appointment")</button>
-    <button>@Html.ActionLink("Logout", "Logout","User")</button>
+    <h1 class="sidebar-logo">  @Html.ActionLink("Logo", "Index", "Home")</h1>
+  
+    <div class="sidebar-link-container">
+        <div class="user-profile-container">
+            <img src="~/Images/User_Photo/default_user_photo.jpg" class="user-profile-img" />
+        </div>
+        <button class="user-link">
+            <img src="~/Content/assets/user-profile-icon.png" class="user-link-icon"/>
+            @Html.ActionLink("My Profile", "UserProfile", "User")
+        </button>
+        <button class="user-link">
+            <img src="~/Content/assets/user-history-icon.png" class="user-link-icon"/>
+            @Html.ActionLink("Appointment History", "AppointmentHistory", "Appointment")
+        </button>
+        <button class="user-link">
+            <img src="~/Content/assets/user-logout-icon.png" class="user-link-icon" />
+            @Html.ActionLink("Logout", "Logout", "User")
+        </button>
+    </div>
+   
 </div>
+
+<link href="~/Content/User/sidebar.css" rel="stylesheet" />

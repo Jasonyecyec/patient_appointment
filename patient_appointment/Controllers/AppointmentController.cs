@@ -141,6 +141,29 @@ namespace patient_appointment.Controllers
             }
 
         }
+        
+        public ActionResult CancelAppointment(int id)
+        {
+
+            try
+            {
+                using (patient_appointment_managementEntities userDBEntities = new patient_appointment_managementEntities())
+                {
+                    appointment_schedule appointmentSchedule = userDBEntities.appointment_schedule.Where(m => m.appointmentID == id).FirstOrDefault();
+                    userDBEntities.appointment_schedule.Remove(appointmentSchedule);
+                    userDBEntities.SaveChanges();
+                }
+                return RedirectToAction("AppointmentHistory", "Appointment");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("AppointmentHistory", "Appointment");
+            }
+
+
+           
+        }
+
 
         public ActionResult AppointmentHistory()
         {
@@ -149,10 +172,11 @@ namespace patient_appointment.Controllers
 
             string email = Session["email"].ToString();
 
-          AppointmentHistory appointmentList = new AppointmentHistory()
+            AppointmentHistory appointmentList = new AppointmentHistory()
             {
-              appointmentHistory = userDBEntities.appointment_schedule.Where(m => m.email == email).Select(m => new appointmentHistoryObject
-              {
+                appointmentHistory = userDBEntities.appointment_schedule.Where(m => m.email == email).Select(m => new appointmentHistoryObject
+                {
+                    appointmentID = m.appointmentID,
                   patientName = m.patient_name,
                   doctorName = m.doctor_name,
                   reference = m.reference_no,
@@ -160,7 +184,7 @@ namespace patient_appointment.Controllers
                   status = m.appointment_status,
                   dateAndTime = m.date_and_time,
                   totalCharge = m.total_charge
-              })};
+              }).OrderByDescending(m => m.appointmentID)};
 
               
             return View(appointmentList);

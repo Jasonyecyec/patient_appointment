@@ -12,6 +12,8 @@ namespace patient_appointment.Models
     }
     public class appointmentHistoryObject
     {
+
+        public int appointmentID { get; set; }
         public string patientName { get; set; }
         public string doctorName { get; set; }
         public string reference { get; set; }

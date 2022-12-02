@@ -1,46 +1,107 @@
 ﻿@model patient_appointment.Models.AppointmentModel
-@*@model List<patient_appointment.Models.AppointmentModel>*@
 
 @{
     /**/
-
+    Layout = null;
     ViewBag.Title = "ConfirmAppointment";
 }
 
-<h2>ConfirmAppointment</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Log In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
-    <p>@Model.email</p>
-    <p>@Model.phoneNumber</p>
-    <p>@Session["name"]</p>
-    <p>@Model.doctorName</p>
-    <p>@Model.service</p>
-    <p>@Model.appointmentDateAndTime</p>
-    <p>@Model.finalCharge</p>
-    <p>@Model.status</p>
-    <p>@Model.referenceNo</p>
+    <link href="~/Content/Appointment/ConfirmAppointment.css" rel="stylesheet" />
+</head>
+<body>
 
-    @Html.HiddenFor(m => m.patientName);
-    @Html.HiddenFor(m => m.email);
-    @Html.HiddenFor(m => m.phoneNumber);
-    @Html.HiddenFor(m => m.doctorName);
-    @Html.HiddenFor(m => m.service);
-    @Html.HiddenFor(m => m.appointmentDateAndTime);
-    @Html.HiddenFor(m => m.finalCharge);
-    @Html.HiddenFor(m => m.status);
-    @Html.HiddenFor(m => m.referenceNo);
-    @Html.HiddenFor(m => m.message);
+    <div class="main">
+        <div class="confirmation-form-container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    <button><a href="javascript:history.back()">Back to List</a></button>
-    <div class="form-group">
-        <input type="submit" value="Log In" class="submit-button" />
+
+                <div class="confirm-details-container">
+                    <div>
+                        <h1 class="appointment-details-text">
+                            Appointment Details
+                        </h1>
+
+                        <p class="label">Patient name </p>
+                        <p class="output"> @Session["name"]</p>
+
+                        <p class="label">Patient email address</p>
+                        <p class="output"> @Model.email</p>
+
+                        <p class="label">Phone number</p>
+                        <p class="output">@Model.phoneNumber</p>
+
+                        <p class="label">Final Charge: <b class="output finalCharge">₱ @Model.finalCharge.ToString("#,##0.00")</b></p>
+                    </div>
+
+                    <div>
+                        <p class="label reference-label">Reference no:</p>
+                        <p class="output reference">@Model.referenceNo </p>
+
+                        <p class="label">Doctor name:</p>
+                        <p class="output">@Model.doctorName</p>
+
+                        <p class="label">Service:</p>
+                        <p class="output">@Model.service</p>
+
+                        <p class="label">Appoinment Date and Time:</p>
+                        <p class="output">@Model.appointmentDateAndTime</p>
+                    </div>
+
+                </div>
+                @Html.HiddenFor(m => m.patientName);
+                @Html.HiddenFor(m => m.email);
+                @Html.HiddenFor(m => m.phoneNumber);
+                @Html.HiddenFor(m => m.doctorName);
+                @Html.HiddenFor(m => m.service);
+                @Html.HiddenFor(m => m.appointmentDateAndTime);
+                @Html.HiddenFor(m => m.finalCharge);
+                @Html.HiddenFor(m => m.status);
+                @Html.HiddenFor(m => m.referenceNo);
+                @Html.HiddenFor(m => m.message);
+
+                <div class="button-container">
+                <a href="javascript:history.back()" class="confirm-btn">Remake Appointment</a>
+
+                    <input type="submit" value="Continue" class="submit-button confirm-btn " />
+
+
+                </div>
+
+            }
+                <div class="confirmAppointment-page-icon-container">
+                    <img src="~/Content/assets/appointment_confirmPage.png" class="confirmAppointment-page-icon" />
+                </div>
+
+        </div>
+    
+
 
     </div>
 
-}
+    <script>
+        const printBtn = document.querySelector(".print");
 
-<p>sample @ViewBag.email</p>
+        printBtn.addEventListener("click", function (e) {
+
+            //windows.print()
+
+            console.log(e.target.closest("form")
+        })
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+        })
+    </script>
+</body>
+</html>
